@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Public+Sans:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230B2426'/%3E%3Cpath d='M7 24V8l18 16V8' stroke='%236FD3C0' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<!-- Same two-hex mark as the header logo, so the browser tab matches the
+     page instead of carrying its own unrelated glyph. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%230B2426'/%3E%3Cpath d='M13,3 L21.66,8 L21.66,18 L13,23 L4.34,18 L4.34,8 Z' fill='none' stroke='%23C8703C' stroke-width='2.6'/%3E%3Cpath d='M27,17 L35.66,22 L35.66,32 L27,37 L18.34,32 L18.34,22 Z' fill='none' stroke='%236FD3C0' stroke-width='2.6'/%3E%3C/svg%3E">
 <style>
   :root{
     --well:#0B2426; --well-2:#103133; --well-3:#17403F;
@@ -35,8 +37,14 @@
        /* Vertical only — the shorthand would zero .wrap's horizontal
           padding and misalign the header against the content. */
        padding-top:1.15rem;padding-bottom:1.15rem;}
-  .brand{display:flex;align-items:baseline;gap:.6rem;}
-  .brand b{font-family:var(--display);font-weight:800;font-size:1.15rem;letter-spacing:-.01em;}
+  /* center, not baseline: baseline let the wordmark's cap-height sit well
+     under the icon's full height even at matched font-sizes, since a
+     baseline-aligned line box extends below the glyphs for descenders
+     the icon doesn't have. */
+  .brand{display:flex;align-items:center;gap:.6rem;}
+  .brand svg{flex-shrink:0;}
+  .brand b{font-family:var(--display);font-weight:800;font-size:1.6rem;
+           line-height:1;letter-spacing:-.01em;}
   .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;
            text-transform:uppercase;color:var(--bone-dim);}
   nav{display:flex;gap:1.4rem;font-size:.92rem;}
@@ -229,10 +237,7 @@
 <footer>
   <div class="wrap foot">
     <span>Norn Labs — an independent project, 2026</span>
-    <span>
-      <a href="/privacy.html">Privacy policy</a> ·
-      <a href="https://nornpulse.nornlabs.ai">NornPulse</a>
-    </span>
+    <span><a href="/privacy.html">Privacy policy</a></span>
   </div>
 </footer>
 
